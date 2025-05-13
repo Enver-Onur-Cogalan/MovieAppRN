@@ -1,10 +1,13 @@
 import React from 'react';
-import { SafeAreaView, Text } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import RootNavigator from './navigation/RootNavigator';
 
 export default () => {
+
+
     return (
-        <SafeAreaView>
-            <Text>IMPLEMENT ME!</Text>
-        </SafeAreaView>
+        <SafeAreaProvider>
+            <RootNavigator />
+        </SafeAreaProvider>
     )
 }
