@@ -1,0 +1,47 @@
+# node_modules
+node_modules/
+
+# logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# macOS
+.DS_Store
+
+# iOS
+ios/Pods/
+ios/build/
+*.xcworkspace
+*.xcuserdata
+ios/*.xcodeproj/project.xcworkspace/xcuserdata
+
+# Android
+android/.gradle/
+android/app/build/
+android/build/
+*.apk
+*.so
+
+# Reanimated build
+**/intermediates/
+**/cmake/
+
+# JetBrains IDEs
+.idea/
+
+# VSCode
+.vscode/
+
+# Babel cache
+babel.config.js
+tmp/
+
+# Metro bundler cache
+.expo/
+.expo-shared/
+
+# Misc
+.env
+.env.local

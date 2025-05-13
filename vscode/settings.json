@@ -35,7 +35,7 @@
     "**/metro.config.js": true,
     "**/.watchmanconfig": true,
     "**/.git": true,
-    "**/.gitignore": true,
+    "**/.gitignore": false,
     "**/app.json": true,
     "index.d.ts": true,
     "index.js": false
