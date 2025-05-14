@@ -1,5 +1,6 @@
 {
   "buildFiles": [
+    "/Users/ericmoren/challenge/MovieAppRN/node_modules/@react-native-async-storage/async-storage/android/build/generated/source/codegen/jni/CMakeLists.txt",
     "/Users/ericmoren/challenge/MovieAppRN/node_modules/lottie-react-native/android/build/generated/source/codegen/jni/CMakeLists.txt",
     "/Users/ericmoren/challenge/MovieAppRN/node_modules/react-native-reanimated/android/build/generated/source/codegen/jni/CMakeLists.txt",
     "/Users/ericmoren/challenge/MovieAppRN/node_modules/react-native-safe-area-context/android/src/main/jni/CMakeLists.txt",
@@ -66,6 +67,11 @@
     },
     "react_codegen_lottiereactnative::@0fa4dc904d7e359a99fb": {
       "artifactName": "react_codegen_lottiereactnative",
+      "abi": "armeabi-v7a",
+      "runtimeFiles": []
+    },
+    "react_codegen_rnasyncstorage::@1596841e19ec5b9eeffe": {
+      "artifactName": "react_codegen_rnasyncstorage",
       "abi": "armeabi-v7a",
       "runtimeFiles": []
     }

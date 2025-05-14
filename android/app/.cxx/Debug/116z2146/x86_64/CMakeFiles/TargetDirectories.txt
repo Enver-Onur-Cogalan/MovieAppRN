@@ -1,6 +1,9 @@
 /Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/x86_64/CMakeFiles/appmodules.dir
 /Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/x86_64/CMakeFiles/edit_cache.dir
 /Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/x86_64/CMakeFiles/rebuild_cache.dir
+/Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/x86_64/rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir
+/Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/x86_64/rnasyncstorage_autolinked_build/CMakeFiles/edit_cache.dir
+/Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/x86_64/rnasyncstorage_autolinked_build/CMakeFiles/rebuild_cache.dir
 /Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/x86_64/lottiereactnative_autolinked_build/CMakeFiles/react_codegen_lottiereactnative.dir
 /Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/x86_64/lottiereactnative_autolinked_build/CMakeFiles/edit_cache.dir
 /Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/x86_64/lottiereactnative_autolinked_build/CMakeFiles/rebuild_cache.dir

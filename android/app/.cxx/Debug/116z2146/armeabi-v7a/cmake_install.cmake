@@ -44,6 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
+  include("/Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/armeabi-v7a/rnasyncstorage_autolinked_build/cmake_install.cmake")
   include("/Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/armeabi-v7a/lottiereactnative_autolinked_build/cmake_install.cmake")
   include("/Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/armeabi-v7a/rnreanimated_autolinked_build/cmake_install.cmake")
   include("/Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/armeabi-v7a/safeareacontext_autolinked_build/cmake_install.cmake")
