@@ -38,3 +38,8 @@ export const searchMoviesByRating = async (minRating) => {
     });
     return response.data.results;
 };
+
+export const getRandomMovies = (moviesArray, count = 5) => {
+    const shuffled = [...moviesArray].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+};

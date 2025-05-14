@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import useAuthStore from '../state/authStore';
 import KeyboardWrapper from '../components/KeyboardWrapper';
 import colors from '../theme/colors';
+import LottieLoader from '../utils/LottieLoader';
 
 export default function RegisterScreen() {
     const [email, setEmail] = useState('');
@@ -61,7 +62,7 @@ export default function RegisterScreen() {
                 />
 
                 {isLoading ? (
-                    <ActivityIndicator size='large' color={colors.primary} />
+                    <LottieLoader animation='loading.json' size={150} />
                 ) : (
                     <TouchableOpacity style={styles.registerButton} onPress={handleRegister}>
                         <Text style={styles.registerButtonText}>Register</Text>

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, StyleSheet, Text, TextInput, Alert, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TextInput, Alert, View, TouchableOpacity } from 'react-native';
 import LottieView from 'lottie-react-native';
 
 import useAuthStore from '../state/authStore';
 import KeyboardWrapper from '../components/KeyboardWrapper';
 import colors from '../theme/colors';
+import LottieLoader from '../utils/LottieLoader';
 
 
 export default function LoginScreen({ navigation }) {
@@ -30,6 +31,7 @@ export default function LoginScreen({ navigation }) {
 
     return (
         <KeyboardWrapper>
+
             <View style={styles.container}>
                 <Text style={styles.title}>Login</Text>
 
@@ -60,7 +62,7 @@ export default function LoginScreen({ navigation }) {
                 />
 
                 {isLoading ? (
-                    <ActivityIndicator size='large' color='#000' />
+                    <LottieLoader animation='loading.json' size={150} />
                 ) : (
                     <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
                         <Text style={styles.loginButtonText}>Login</Text>
@@ -75,7 +77,7 @@ export default function LoginScreen({ navigation }) {
                 </View>
             </View>
         </KeyboardWrapper>
-    )
+    );
 }
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Platform, View, ScrollView } from 'react-native'
+import { TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Platform, ScrollView } from 'react-native'
 
 export default function KeyboardWrapper({ children }) {
     return (
