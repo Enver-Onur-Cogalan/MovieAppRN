@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 
 // Registration process
@@ -11,3 +11,8 @@ export const loginUser = (email, password) =>
 
 // Exit process
 export const logoutUser = () => signOut(auth);
+
+// Automatic login control
+export const observeAuthState = (callback) => {
+    return onAuthStateChanged(auth, callback);
+};

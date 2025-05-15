@@ -1,6 +1,5 @@
 import React from 'react';
 import { Dimensions, ImageBackground, StyleSheet, Text, View } from 'react-native';
-import * as Animatable from 'react-native-animatable';
 import Animated, { Extrapolate, interpolate, useAnimatedStyle, } from 'react-native-reanimated';
 
 import colors from '../theme/colors';

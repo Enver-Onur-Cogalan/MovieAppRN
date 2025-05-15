@@ -1,10 +1,11 @@
 import { create } from "zustand";
-import { loginUser, registerUser, logoutUser } from "../services/auth";
+import { loginUser, registerUser, logoutUser, observeAuthState } from "../services/auth";
 
 const useAuthStore = create((set) => ({
     user: null,
     isLoading: false,
     error: null,
+    isAuthReady: false,
 
     setUser: (user) => set({ user }),
 
@@ -15,7 +16,7 @@ const useAuthStore = create((set) => ({
             const userCredential = await loginUser(email, password);
             set({ user: userCredential.user });
         } catch (err) {
-            set({ error: err.message })
+            set({ error: err.message });
         } finally {
             set({ isLoading: false });
         }
@@ -26,6 +27,7 @@ const useAuthStore = create((set) => ({
         try {
             set({ isLoading: true, error: null });
             const userCredential = await registerUser(email, password);
+            set({ user: userCredential.user })
         } catch (err) {
             set({ error: err.message });
         } finally {
@@ -45,9 +47,24 @@ const useAuthStore = create((set) => ({
             set({ isLoading: false });
         }
     },
+
+    // Automatic login control
+    checkAuthState: async () => {
+        const unsubscribe = observeAuthState((user) => {
+            if (user) {
+                console.log('firebase account found', user.email);
+                set({ user, isAuthReady: true });
+            } else {
+                console.log('Session not found');
+                set({ user: null, isAuthReady: true });
+            }
+        });
+        return unsubscribe;
+    }
 }));
 
 export default useAuthStore;
+
 
 
 
