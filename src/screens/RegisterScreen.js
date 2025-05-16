@@ -4,9 +4,10 @@ import LottieView from 'lottie-react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import useAuthStore from '../state/authStore';
-import KeyboardWrapper from '../components/KeyboardWrapper';
 import colors from '../theme/colors';
 import LottieLoader from '../utils/LottieLoader';
+import KeyboardRefreshWrapper from '../components/KeyboardRefreshWrapper';
+import fonts from '../theme/fonts';
 
 export default function RegisterScreen() {
     const [email, setEmail] = useState('');
@@ -32,9 +33,9 @@ export default function RegisterScreen() {
     }, [error]);
 
     return (
-        <KeyboardWrapper>
+        <KeyboardRefreshWrapper>
             <View style={styles.container}>
-                <Text style={styles.title}>Register</Text>,
+                <Text style={styles.title}>Register</Text>
                 <LottieView
                     source={require('../assets/animations/register.json')}
                     autoPlay
@@ -76,7 +77,7 @@ export default function RegisterScreen() {
                     </TouchableOpacity>
                 </View>
             </View>
-        </KeyboardWrapper>
+        </KeyboardRefreshWrapper>
     );
 }
 
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
         padding: 24,
     },
     title: {
-        fontSize: 28,
+        fontSize: fonts.title,
         marginBottom: 32,
         fontWeight: 'bold',
         color: colors.primary,
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
     registerButtonText: {
         color: colors.text,
         fontWeight: 'bold',
-        fontSize: 17,
+        fontSize: fonts.sectionTitle,
     },
     loginRow: {
         marginTop: 24,

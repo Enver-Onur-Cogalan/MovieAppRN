@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 import colors from '../theme/colors';
+import fonts from '../theme/fonts';
 
 export default function ConfirmDeleteModal({ visible, onClose, onConfirm }) {
     const [password, setPassword] = useState('');
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
         elevation: 6,
     },
     title: {
-        fontSize: 18,
+        fontSize: fonts.sectionTitle,
         fontWeight: 'bold',
         color: colors.text,
         marginBottom: 10,

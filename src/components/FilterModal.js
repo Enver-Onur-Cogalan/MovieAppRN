@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import colors from '../theme/colors';
+import fonts from '../theme/fonts';
 
 const genres = ['Action', 'Comedy', 'Drama', 'Horror', 'Sci-Fi', 'Animation'];
 const ratings = ['9+', '8+', '7+', '6+', '5+'];
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 20,
     },
     title: {
-        fontSize: 20,
+        fontSize: fonts.subtitle,
         fontWeight: 'bold',
         color: colors.text,
         marginBottom: 16,

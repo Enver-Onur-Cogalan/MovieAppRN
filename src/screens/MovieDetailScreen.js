@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Dimensions, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import * as Animatable from 'react-native-animatable';
@@ -11,10 +11,12 @@ import colors from '../theme/colors';
 import CastCard from '../components/CastCard';
 import useAuthStore from '../state/authStore';
 import useFavoriteStore from '../state/favoriteStore';
+import fonts from '../theme/fonts';
 
 const { width, height } = Dimensions.get('window');
 
 export default function MovieDetailScreen() {
+    const navigation = useNavigation();
     const route = useRoute();
     const { movie } = route.params;
 
@@ -40,6 +42,12 @@ export default function MovieDetailScreen() {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
+            <Animatable.View animation='pulse' iterationCount='infinite' duration={800} style={styles.header}>
+                <TouchableOpacity onPress={() => navigation.navigate('Tabs')}>
+                    <Icon name='arrow-back-ios' size={24} color={colors.text} />
+                </TouchableOpacity>
+            </Animatable.View>
+
             <ScrollView style={styles.container}>
                 <View>
                     <Image
@@ -107,19 +115,19 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     title: {
-        fontSize: 28,
+        fontSize: fonts.title,
         fontWeight: 'bold',
         color: colors.primary,
     },
     description: {
-        fontSize: 16,
+        fontSize: fonts.body,
         color: colors.textSecondary || '#aaa',
     },
     content: {
         padding: 16,
     },
     castTitle: {
-        fontSize: 28,
+        fontSize: fonts.title,
         fontWeight: 'bold',
         color: colors.primary,
         marginBottom: 8,
@@ -134,7 +142,7 @@ const styles = StyleSheet.create({
         marginRight: 50,
     },
     infoText: {
-        fontSize: 16,
+        fontSize: fonts.body,
         fontWeight: '500',
         color: colors.text,
     },
@@ -142,5 +150,14 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: colors.primary,
         padding: 20
-    }
+    },
+    header: {
+        position: 'absolute',
+        top: 50,
+        left: 16,
+        zIndex: 100,
+        borderRadius: 8,
+        padding: 6,
+        backgroundColor: colors.background,
+    },
 });

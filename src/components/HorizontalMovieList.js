@@ -4,6 +4,7 @@ import Animated, { useAnimatedScrollHandler, useSharedValue } from 'react-native
 
 import colors from '../theme/colors';
 import HorizontalMovieCard from './HorizontalMovieCard';
+import fonts from '../theme/fonts';
 
 const { width } = Dimensions.get('window');
 
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
     },
     title: {
         color: colors.text,
-        fontSize: 20,
+        fontSize: fonts.subtitle,
         fontWeight: 'bold',
         marginBottom: 12,
         paddingHorizontal: 16,

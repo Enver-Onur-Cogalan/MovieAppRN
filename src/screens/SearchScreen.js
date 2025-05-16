@@ -8,9 +8,8 @@ import FilterModal from '../components/FilterModal';
 import { getGenreIdByName } from '../utils/genreMap';
 import MovieCard from '../components/MovieCard';
 import LottieLoader from '../utils/LottieLoader';
-import EmptyLottie from '../utils/EmptyLottie';
-import KeyboardWrapper from '../components/KeyboardWrapper';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import KeyboardRefreshWrapper from '../components/KeyboardRefreshWrapper';
 
 export default function SearchScreen() {
     const [query, setQuery] = useState('');
@@ -48,7 +47,7 @@ export default function SearchScreen() {
 
 
     return (
-        <KeyboardWrapper>
+        <KeyboardRefreshWrapper>
             <SafeAreaView style={{ flex: 1 }}>
                 <SearchFilterBar
                     search={query}
@@ -90,7 +89,7 @@ export default function SearchScreen() {
                     setSelectedRating={setSelectedRating}
                 />
             </SafeAreaView>
-        </KeyboardWrapper>
+        </KeyboardRefreshWrapper>
     );
 }
 

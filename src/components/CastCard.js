@@ -3,6 +3,7 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 import colors from '../theme/colors';
+import fonts from '../theme/fonts';
 
 
 
@@ -44,13 +45,13 @@ const styles = StyleSheet.create({
         marginBottom: 6,
     },
     name: {
-        fontSize: 12,
+        fontSize: fonts.tiny,
         fontWeight: 'bold',
         color: colors.text,
         textAlign: 'center',
     },
     character: {
-        fontSize: 12,
+        fontSize: fonts.tiny,
         color: colors.textSecondary || '#aaa',
         textAlign: 'center',
     },

@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import colors from '../theme/colors';
 import useAuthStore from '../state/authStore';
 import ConfirmDeleteModal from '../components/ConfirmDeleteModal';
+import fonts from '../theme/fonts';
 
 export default function ProfileScreen() {
     const { logout, deleteAccount, user } = useAuthStore();
@@ -79,11 +80,11 @@ const styles = StyleSheet.create({
     logoutText: {
         color: colors.text,
         fontWeight: 'bold',
-        fontSize: 16,
+        fontSize: fonts.body,
     },
     deleteText: {
         color: '#aaa',
-        fontSize: 16,
+        fontSize: fonts.body,
         textDecorationLine: 'underline',
     },
     icon: {

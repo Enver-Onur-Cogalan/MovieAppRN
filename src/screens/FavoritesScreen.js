@@ -7,10 +7,11 @@ import useAuthStore from '../state/authStore';
 import FavoriteMovieCard from '../components/FavoriteMovieCard';
 import colors from '../theme/colors';
 import SearchFilterBar from '../components/SearchFilterBar';
-import KeyboardWrapper from '../components/KeyboardWrapper';
 import FilterModal from '../components/FilterModal';
 import { getGenreIdByName } from '../utils/genreMap';
 import EmptyLottie from '../utils/EmptyLottie';
+import KeyboardRefreshWrapper from '../components/KeyboardRefreshWrapper';
+import fonts from '../theme/fonts';
 
 export default function FavoritesScreen() {
     const { favorites, loadFavorites, toggleFavorite } = useFavoriteStore();
@@ -42,7 +43,7 @@ export default function FavoritesScreen() {
     });
 
     return (
-        <KeyboardWrapper>
+        <KeyboardRefreshWrapper refreshing={false} onRefresh={() => loadFavorites(user.id)}>
             <SafeAreaView style={styles.container}>
                 <StatusBar backgroundColor={colors.background} barStyle='light-content' />
                 <Text style={styles.header}>Your Favorite Movies</Text>
@@ -74,7 +75,7 @@ export default function FavoritesScreen() {
                     )}
                 />
             </SafeAreaView>
-        </KeyboardWrapper>
+        </KeyboardRefreshWrapper>
     )
 }
 
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
     },
     header: {
-        fontSize: 28,
+        fontSize: fonts.title,
         fontWeight: 'bold',
         color: colors.text,
         marginTop: 16,
@@ -100,6 +101,6 @@ const styles = StyleSheet.create({
         color: '#aaa',
         textAlign: 'center',
         marginTop: 64,
-        fontSize: 16,
+        fontSize: fonts.body
     },
 });

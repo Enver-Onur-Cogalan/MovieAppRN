@@ -5,6 +5,7 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 
 import colors from '../theme/colors';
+import fonts from '../theme/fonts';
 
 const CARD_WIDTH = 350;
 
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
     },
     title: {
         color: colors.text,
-        fontSize: 13,
+        fontSize: fonts.small,
         fontWeight: 'bold',
     },
 });

@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 
 import colors from '../theme/colors';
+import fonts from '../theme/fonts';
 
 
 
@@ -58,6 +59,6 @@ const styles = StyleSheet.create({
     title: {
         color: colors.text,
         fontWeight: 'bold',
-        fontSize: 14,
+        fontSize: fonts.small,
     },
 });

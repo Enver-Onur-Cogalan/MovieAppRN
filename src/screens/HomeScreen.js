@@ -1,25 +1,56 @@
-import React, { useEffect, useState } from 'react';
-import { FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import { FlatList, StyleSheet, Text, View, Alert, BackHandler } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useFocusEffect } from '@react-navigation/native';
 
-import { fetchPopularMovies, getRandomMovies } from '../services/api';
+import { fetchPopularMovies, getRandomMovies, fetchTopRatedMovies, fetchNowPlayingMovies } from '../services/api';
 import colors from '../theme/colors';
 import LottieLoader from '../utils/LottieLoader';
 import MovieCard from '../components/MovieCard';
 import HorizontalMovieList from '../components/HorizontalMovieList';
+import KeyboardRefreshWrapper from '../components/KeyboardRefreshWrapper';
+import { getUniqueRandomMovies } from '../utils/movieHelpers';
+import fonts from '../theme/fonts';
+
 
 export default function HomeScreen() {
     const [allMovies, setAllMovies] = useState([]);
     const [randomMovies, setRandomMovies] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    useFocusEffect(
+        useCallback(() => {
+            const onBackPress = () => {
+                Alert.alert(
+                    'Do you want to exit my app? 😅',
+                    'Or are you testing for bugs? 😂',
+                    [
+                        { text: 'No', style: 'cancel' },
+                        { text: 'Yes', onPress: () => BackHandler.exitApp() },
+                    ]
+                );
+                return true;
+            };
+
+            const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+            return () => subscription.remove();
+        }, [])
+    );
+
+
     const loadMovies = async () => {
         try {
             setLoading(true);
-            const data = await fetchPopularMovies();
-            setAllMovies(data);
-            setRandomMovies(getRandomMovies(data));
+            const popular = await fetchPopularMovies();
+            const topRated = await fetchTopRatedMovies();
+            const nowPlaying = await fetchNowPlayingMovies();
+
+            const mixed = getUniqueRandomMovies([popular, topRated, nowPlaying], 5);
+
+            setAllMovies(popular);
+            setRandomMovies(getRandomMovies(mixed));
         } catch (err) {
             console.error('Failed to retrieve movie data:', err);
         } finally {
@@ -34,7 +65,7 @@ export default function HomeScreen() {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
-            <ScrollView style={styles.container}>
+            <KeyboardRefreshWrapper refreshing={loading} onRefresh={loadMovies}>
                 {loading ? (
                     <LottieLoader animation='loading' size={150} />
                 ) : (
@@ -67,7 +98,7 @@ export default function HomeScreen() {
                         />
                     </>
                 )}
-            </ScrollView>
+            </KeyboardRefreshWrapper>
         </SafeAreaView>
     );
 }
@@ -88,7 +119,7 @@ const styles = StyleSheet.create({
     },
     sectionTitle: {
         color: colors.text,
-        fontSize: 20,
+        fontSize: fonts.subtitle,
         fontWeight: 'bold',
         marginLeft: 8,
     },

@@ -3,9 +3,10 @@ import { StyleSheet, Text, TextInput, Alert, View, TouchableOpacity } from 'reac
 import LottieView from 'lottie-react-native';
 
 import useAuthStore from '../state/authStore';
-import KeyboardWrapper from '../components/KeyboardWrapper';
 import colors from '../theme/colors';
 import LottieLoader from '../utils/LottieLoader';
+import KeyboardRefreshWrapper from '../components/KeyboardRefreshWrapper';
+import fonts from '../theme/fonts';
 
 
 export default function LoginScreen({ navigation }) {
@@ -19,6 +20,7 @@ export default function LoginScreen({ navigation }) {
             Alert.alert("Missing Information", "Please enter your email and password.");
             return;
         }
+
         login(email, password);
     };
 
@@ -30,7 +32,7 @@ export default function LoginScreen({ navigation }) {
 
 
     return (
-        <KeyboardWrapper>
+        <KeyboardRefreshWrapper>
 
             <View style={styles.container}>
                 <Text style={styles.title}>Login</Text>
@@ -76,7 +78,7 @@ export default function LoginScreen({ navigation }) {
                     </TouchableOpacity>
                 </View>
             </View>
-        </KeyboardWrapper>
+        </KeyboardRefreshWrapper>
     );
 }
 
@@ -90,7 +92,7 @@ const styles = StyleSheet.create({
         padding: 20,
     },
     title: {
-        fontSize: 28,
+        fontSize: fonts.title,
         marginBottom: 32,
         fontWeight: 'bold',
         color: colors.primary,
@@ -126,7 +128,7 @@ const styles = StyleSheet.create({
     loginButtonText: {
         color: colors.text,
         fontWeight: 'bold',
-        fontSize: 17,
+        fontSize: fonts.sectionTitle,
     },
     registerRow: {
         marginTop: 24,

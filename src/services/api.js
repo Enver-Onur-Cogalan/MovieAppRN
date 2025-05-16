@@ -16,6 +16,20 @@ export const fetchPopularMovies = async () => {
     return response.data.results;
 };
 
+export const fetchTopRatedMovies = async () => {
+    const response = await axios.get(`${BASE_URL}/movie/top_rated`, {
+        params: { api_key: API_KEY }
+    });
+    return response.data.results;
+};
+
+export const fetchNowPlayingMovies = async () => {
+    const response = await axios.get(`${BASE_URL}/movie/now_playing`, {
+        params: { api_key: API_KEY }
+    });
+    return response.data.results;
+};
+
 export const fetchMovieDetails = async (movieId) => {
     const response = await api.get(`/movie/${movieId}`);
     return response.data;
