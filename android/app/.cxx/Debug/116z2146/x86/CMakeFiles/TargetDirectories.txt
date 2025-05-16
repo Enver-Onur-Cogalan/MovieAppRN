@@ -7,6 +7,9 @@
 /Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/x86/lottiereactnative_autolinked_build/CMakeFiles/react_codegen_lottiereactnative.dir
 /Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/x86/lottiereactnative_autolinked_build/CMakeFiles/edit_cache.dir
 /Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/x86/lottiereactnative_autolinked_build/CMakeFiles/rebuild_cache.dir
+/Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/x86/rngesturehandler_codegen_autolinked_build/CMakeFiles/react_codegen_rngesturehandler_codegen.dir
+/Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/x86/rngesturehandler_codegen_autolinked_build/CMakeFiles/edit_cache.dir
+/Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/x86/rngesturehandler_codegen_autolinked_build/CMakeFiles/rebuild_cache.dir
 /Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/x86/rnreanimated_autolinked_build/CMakeFiles/react_codegen_rnreanimated.dir
 /Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/x86/rnreanimated_autolinked_build/CMakeFiles/edit_cache.dir
 /Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/x86/rnreanimated_autolinked_build/CMakeFiles/rebuild_cache.dir

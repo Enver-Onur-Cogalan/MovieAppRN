@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getApps, initializeApp } from 'firebase/app';
 import { getAuth, initializeAuth, getReactNativePersistence } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBL280xE_bBbWBzAARuD-KI8H4YM6dklJ8",
@@ -28,4 +29,6 @@ if (getApps().length === 0) {
     console.log('ℹ️ Firebase already initialized, using existing instance');
 }
 
-export { app, auth };
+const db = getFirestore(app);
+
+export { app, auth, db };

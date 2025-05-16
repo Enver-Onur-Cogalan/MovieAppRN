@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import AuthStack from './AuthStack';
-import AppTabs from './AppTabs';
+import MainNavigator from './MainNavigator';
 import useAuthStore from '../state/authStore';
 import colors from '../theme/colors';
 import LottieLoader from '../utils/LottieLoader';
@@ -19,7 +19,7 @@ export default function RootNavigator() {
     }, []);
 
     if (!isAuthReady) {
-        console.log('auth durumu kontrol ediliyor')
+        console.log('Checking auth status')
         return (
             <SafeAreaProvider>
                 <View style={{ flex: 1, backgroundColor: colors.background }}>
@@ -32,7 +32,7 @@ export default function RootNavigator() {
     return (
         <SafeAreaProvider>
             <NavigationContainer>
-                {user ? <AppTabs /> : <AuthStack />}
+                {user ? <MainNavigator /> : <AuthStack />}
             </NavigationContainer>
         </SafeAreaProvider>
     );

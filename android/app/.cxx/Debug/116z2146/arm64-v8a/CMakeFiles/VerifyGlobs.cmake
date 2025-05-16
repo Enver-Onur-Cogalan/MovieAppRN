@@ -62,6 +62,31 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   file(TOUCH_NOCREATE "/Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/arm64-v8a/CMakeFiles/cmake.verify_globs")
 endif()
 
+# react_codegen_SRCS at /Users/ericmoren/challenge/MovieAppRN/node_modules/react-native-gesture-handler/android/build/generated/source/codegen/jni/CMakeLists.txt:9 (file)
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "/Users/ericmoren/challenge/MovieAppRN/node_modules/react-native-gesture-handler/android/build/generated/source/codegen/jni/*.cpp")
+set(OLD_GLOB
+  "/Users/ericmoren/challenge/MovieAppRN/node_modules/react-native-gesture-handler/android/build/generated/source/codegen/jni/rngesturehandler_codegen-generated.cpp"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  file(TOUCH_NOCREATE "/Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/arm64-v8a/CMakeFiles/cmake.verify_globs")
+endif()
+
+# react_codegen_SRCS at /Users/ericmoren/challenge/MovieAppRN/node_modules/react-native-gesture-handler/android/build/generated/source/codegen/jni/CMakeLists.txt:9 (file)
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "/Users/ericmoren/challenge/MovieAppRN/node_modules/react-native-gesture-handler/android/build/generated/source/codegen/jni/react/renderer/components/rngesturehandler_codegen/*.cpp")
+set(OLD_GLOB
+  "/Users/ericmoren/challenge/MovieAppRN/node_modules/react-native-gesture-handler/android/build/generated/source/codegen/jni/react/renderer/components/rngesturehandler_codegen/ComponentDescriptors.cpp"
+  "/Users/ericmoren/challenge/MovieAppRN/node_modules/react-native-gesture-handler/android/build/generated/source/codegen/jni/react/renderer/components/rngesturehandler_codegen/EventEmitters.cpp"
+  "/Users/ericmoren/challenge/MovieAppRN/node_modules/react-native-gesture-handler/android/build/generated/source/codegen/jni/react/renderer/components/rngesturehandler_codegen/Props.cpp"
+  "/Users/ericmoren/challenge/MovieAppRN/node_modules/react-native-gesture-handler/android/build/generated/source/codegen/jni/react/renderer/components/rngesturehandler_codegen/ShadowNodes.cpp"
+  "/Users/ericmoren/challenge/MovieAppRN/node_modules/react-native-gesture-handler/android/build/generated/source/codegen/jni/react/renderer/components/rngesturehandler_codegen/States.cpp"
+  "/Users/ericmoren/challenge/MovieAppRN/node_modules/react-native-gesture-handler/android/build/generated/source/codegen/jni/react/renderer/components/rngesturehandler_codegen/rngesturehandler_codegenJSI-generated.cpp"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  file(TOUCH_NOCREATE "/Users/ericmoren/challenge/MovieAppRN/android/app/.cxx/Debug/116z2146/arm64-v8a/CMakeFiles/cmake.verify_globs")
+endif()
+
 # react_codegen_SRCS at /Users/ericmoren/challenge/MovieAppRN/node_modules/react-native-reanimated/android/build/generated/source/codegen/jni/CMakeLists.txt:9 (file)
 file(GLOB NEW_GLOB LIST_DIRECTORIES true "/Users/ericmoren/challenge/MovieAppRN/node_modules/react-native-reanimated/android/build/generated/source/codegen/jni/*.cpp")
 set(OLD_GLOB

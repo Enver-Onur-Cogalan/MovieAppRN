@@ -1,13 +1,20 @@
 import React from 'react';
 import { Dimensions, ImageBackground, StyleSheet, Text, View } from 'react-native';
 import Animated, { Extrapolate, interpolate, useAnimatedStyle, } from 'react-native-reanimated';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 import colors from '../theme/colors';
 
-const { width } = Dimensions.get('window');
 const CARD_WIDTH = 350;
 
 export default function HorizontalMovieCard({ movie, index, scrollX }) {
+    const navigation = useNavigation();
+
+    const handlePress = () => {
+        navigation.navigate('Detail', { movie });
+    };
+
     const inputRange = [
         (index - 1) * CARD_WIDTH,
         index * CARD_WIDTH,
@@ -24,19 +31,21 @@ export default function HorizontalMovieCard({ movie, index, scrollX }) {
     });
 
     return (
-        <Animated.View style={[styles.card, animatedStyle]}>
-            <ImageBackground
-                source={{ uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}` }}
-                style={styles.image}
-                imageStyle={{ borderRadius: 12, resizeMode: 'stretch' }}
-            >
-                <View style={styles.overlay}>
-                    <Text style={styles.title} numberOfLines={1}>
-                        {movie.title}
-                    </Text>
-                </View>
-            </ImageBackground>
-        </Animated.View>
+        <TouchableWithoutFeedback onPress={handlePress}>
+            <Animated.View style={[styles.card, animatedStyle]}>
+                <ImageBackground
+                    source={{ uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}` }}
+                    style={styles.image}
+                    imageStyle={{ borderRadius: 12, resizeMode: 'stretch' }}
+                >
+                    <View style={styles.overlay}>
+                        <Text style={styles.title} numberOfLines={1}>
+                            {movie.title}
+                        </Text>
+                    </View>
+                </ImageBackground>
+            </Animated.View>
+        </TouchableWithoutFeedback>
     );
 }
 

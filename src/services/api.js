@@ -43,3 +43,30 @@ export const getRandomMovies = (moviesArray, count = 5) => {
     const shuffled = [...moviesArray].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, count);
 };
+
+export const fetchMovieCredits = async (movieId) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/movie/${movieId}/credits`, {
+            params: {
+                api_key: API_KEY,
+            },
+        });
+        return response.data.cast;
+    } catch (error) {
+        console.error('Error fetching movie credits:', error);
+        return [];
+    }
+};
+
+export const searchMovies = async (query) => {
+    if (!query) return [];
+
+    const url = `${BASE_URL}/search/movie`;
+    const params = {
+        api_key: API_KEY,
+        query,
+    };
+
+    const response = await axios.get(url, { params });
+    return response.data.results;
+};

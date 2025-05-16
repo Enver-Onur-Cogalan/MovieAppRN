@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { loginUser, registerUser, logoutUser, observeAuthState } from "../services/auth";
+import { deleteAccount as deleteAccountService } from "../services/auth";
 
 const useAuthStore = create((set) => ({
     user: null,
@@ -14,7 +15,8 @@ const useAuthStore = create((set) => ({
         try {
             set({ isLoading: true, error: null });
             const userCredential = await loginUser(email, password);
-            set({ user: userCredential.user });
+            const { uid, email: userEmail } = userCredential.user;
+            set({ user: { id: uid, email: userEmail } });
         } catch (err) {
             set({ error: err.message });
         } finally {
@@ -27,7 +29,8 @@ const useAuthStore = create((set) => ({
         try {
             set({ isLoading: true, error: null });
             const userCredential = await registerUser(email, password);
-            set({ user: userCredential.user })
+            const { uid, email: userEmail } = userCredential.user;
+            set({ user: { id: uid, email: userEmail } });
         } catch (err) {
             set({ error: err.message });
         } finally {
@@ -53,14 +56,28 @@ const useAuthStore = create((set) => ({
         const unsubscribe = observeAuthState((user) => {
             if (user) {
                 console.log('firebase account found', user.email);
-                set({ user, isAuthReady: true });
+                const { uid, email } = user;
+                set({ user: { id: uid, email }, isAuthReady: true });
             } else {
                 console.log('Session not found');
                 set({ user: null, isAuthReady: true });
             }
         });
         return unsubscribe;
-    }
+    },
+
+    // Delete Account
+    deleteAccount: async (email, password) => {
+        try {
+            set({ isLoading: true });
+            await deleteAccountService(email, password);
+            set({ user: null });
+        } catch (err) {
+            set({ error: err.message });
+        } finally {
+            set({ isLoading: false });
+        }
+    },
 }));
 
 export default useAuthStore;

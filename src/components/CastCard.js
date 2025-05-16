@@ -1,0 +1,57 @@
+import React from 'react';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import * as Animatable from 'react-native-animatable';
+
+import colors from '../theme/colors';
+
+
+
+export default function CastCard({ actor, index }) {
+
+
+    return (
+        <Animatable.View
+            animation='fadeInLeftBig'
+            delay={index * 100}
+            duration={800}
+            style={styles.card}
+        >
+            <Image
+                source={
+                    actor.profile_path
+                        ? { uri: `https://image.tmdb.org/t/p/w200${actor.profile_path}` }
+                        : require('../assets/placeholder.png')
+                }
+                style={styles.image}
+            />
+            <Text style={styles.name} numberOfLines={1}>{actor.name}</Text>
+            <Text style={styles.character} numberOfLines={1}>{actor.character}</Text>
+        </Animatable.View>
+    );
+}
+
+
+const styles = StyleSheet.create({
+    card: {
+        width: 100,
+        marginRight: 12,
+        alignItems: 'center',
+    },
+    image: {
+        width: 80,
+        height: 80,
+        borderRadius: 40,
+        marginBottom: 6,
+    },
+    name: {
+        fontSize: 12,
+        fontWeight: 'bold',
+        color: colors.text,
+        textAlign: 'center',
+    },
+    character: {
+        fontSize: 12,
+        color: colors.textSecondary || '#aaa',
+        textAlign: 'center',
+    },
+});
