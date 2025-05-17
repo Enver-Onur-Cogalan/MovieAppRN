@@ -1,6 +1,7 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, deleteUser, EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth";
-import { auth, db } from "./firebase";
 import { deleteDoc, doc } from "firebase/firestore";
+
+import { auth, db } from "./firebase";
 
 // Registration process
 export const registerUser = (email, password) =>

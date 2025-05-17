@@ -1,4 +1,5 @@
 import { create } from "zustand";
+
 import { addFavorite, removeFavorite, getFavorites } from "../services/favorites";
 
 const useFavoriteStore = create((set, get) => ({

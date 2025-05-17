@@ -5,8 +5,8 @@ import * as Animatable from 'react-native-animatable';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Swipeable } from 'react-native-gesture-handler';
 
-import colors from '../theme/colors';
-import fonts from '../theme/fonts';
+import colors from '../../theme/colors';
+import fonts from '../../theme/fonts';
 
 export default function FavoriteMovieCard({ movie, onToggleFavorite }) {
     const navigation = useNavigation();
@@ -26,7 +26,7 @@ export default function FavoriteMovieCard({ movie, onToggleFavorite }) {
     const renderRightActions = () => {
         return (
             <View style={styles.deleteBox}>
-                <Icon name='delete-forever' size={28} color={colors.primary} />
+                <Icon name='delete-forever' size={28} color={colors.text} />
             </View>
         )
     }
@@ -68,7 +68,7 @@ export default function FavoriteMovieCard({ movie, onToggleFavorite }) {
 const styles = StyleSheet.create({
     card: {
         flexDirection: 'row',
-        backgroundColor: colors.backgroundColor,
+        backgroundColor: colors.background,
         borderRadius: 12,
         marginVertical: 8,
         overflow: 'hidden',

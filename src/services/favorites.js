@@ -1,5 +1,6 @@
-import { db } from './firebase';
 import { collection, doc, setDoc, deleteDoc, getDocs } from 'firebase/firestore';
+
+import { db } from './firebase';
 
 export const addFavorite = async (userId, movie) => {
     if (!userId || !movie?.id) {

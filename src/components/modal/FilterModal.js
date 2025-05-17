@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import colors from '../theme/colors';
-import fonts from '../theme/fonts';
+import colors from '../../theme/colors';
+import fonts from '../../theme/fonts';
 
 const genres = ['Action', 'Comedy', 'Drama', 'Horror', 'Sci-Fi', 'Animation'];
 const ratings = ['9+', '8+', '7+', '6+', '5+'];
@@ -13,6 +13,7 @@ export default function FilterModal({ visible, onClose, onApply, selectedGenre, 
                 <View style={styles.modal}>
                     <Text style={styles.title}>Filter Movies</Text>
 
+                    {/* Type selection */}
                     <Text style={styles.label}>Genre</Text>
                     <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.row}>
                         {genres.map((genre) => (
@@ -26,6 +27,7 @@ export default function FilterModal({ visible, onClose, onApply, selectedGenre, 
                         ))}
                     </ScrollView>
 
+                    {/* Point selection */}
                     <Text style={styles.label}>Rating</Text>
                     <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.row}>
                         {ratings.map((rating) => (
@@ -39,15 +41,19 @@ export default function FilterModal({ visible, onClose, onApply, selectedGenre, 
                         ))}
                     </ScrollView>
 
+                    {/* Buttons: Cancel, Apply, Reset */}
                     <View style={styles.actions}>
+                        {/* Closes the modal */}
                         <TouchableOpacity onPress={onClose} style={styles.button}>
                             <Text style={styles.buttonText}>Cancel</Text>
                         </TouchableOpacity>
 
+                        {/* The modal is closed with the Apply button */}
                         <TouchableOpacity onPress={onApply} style={[styles.button, styles.apply]}>
                             <Text style={styles.buttonText}>Apply</Text>
                         </TouchableOpacity>
 
+                        {/* Clears all filters and closes the modal */}
                         <TouchableOpacity
                             onPress={() => {
                                 setSelectedGenre(null);

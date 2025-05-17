@@ -1,7 +1,7 @@
 import React from 'react';
-import { KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard, ScrollView, RefreshControl, FlatList } from 'react-native';
+import { KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard, ScrollView, RefreshControl } from 'react-native';
 
-import colors from '../theme/colors';
+import colors from '../../theme/colors';
 
 export default function KeyboardRefreshWrapper({
     children,

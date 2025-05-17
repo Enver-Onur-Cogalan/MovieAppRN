@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StatusBar, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import LottieView from 'lottie-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import colors from '../theme/colors';
-import useAuthStore from '../state/authStore';
-import ConfirmDeleteModal from '../components/ConfirmDeleteModal';
-import fonts from '../theme/fonts';
+import colors from '../../theme/colors';
+import useAuthStore from '../../state/authStore';
+import ConfirmDeleteModal from '../../components/modal/ConfirmDeleteModal';
+import fonts from '../../theme/fonts';
 
 export default function ProfileScreen() {
     const { logout, deleteAccount, user } = useAuthStore();
 
-    console.log('user:', user)
-
+    // Modal visibility for account deletion confirmation
     const [confirmVisible, setConfirmVisible] = useState(false);
 
     const handleLogout = () => {
@@ -29,8 +28,9 @@ export default function ProfileScreen() {
 
     return (
         <SafeAreaView style={styles.container}>
+            <StatusBar backgroundColor={colors.background} barStyle='light-content' />
             <LottieView
-                source={require('../assets/animations/profile.json')}
+                source={require('../../assets/animations/profile.json')}
                 autoPlay
                 loop
                 style={styles.lottie}
@@ -52,7 +52,7 @@ export default function ProfileScreen() {
                 onConfirm={handleDelete}
             />
         </SafeAreaView>
-    )
+    );
 }
 
 

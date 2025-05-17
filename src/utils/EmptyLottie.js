@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import LottieView from 'lottie-react-native';
+
 import colors from '../theme/colors';
 
 export default function EmptyLottie({ message = 'Nothing here...', size = 200 }) {

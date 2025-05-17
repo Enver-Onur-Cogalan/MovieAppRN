@@ -1,11 +1,11 @@
 import React from 'react';
-import { Dimensions, ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 import Animated, { Extrapolate, interpolate, useAnimatedStyle, } from 'react-native-reanimated';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 
-import colors from '../theme/colors';
-import fonts from '../theme/fonts';
+import colors from '../../theme/colors';
+import fonts from '../../theme/fonts';
 
 const CARD_WIDTH = 350;
 

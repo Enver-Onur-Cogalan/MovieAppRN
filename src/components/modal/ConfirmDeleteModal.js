@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Modal, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-import colors from '../theme/colors';
-import fonts from '../theme/fonts';
+import colors from '../../theme/colors';
+import fonts from '../../theme/fonts';
 
 export default function ConfirmDeleteModal({ visible, onClose, onConfirm }) {
     const [password, setPassword] = useState('');

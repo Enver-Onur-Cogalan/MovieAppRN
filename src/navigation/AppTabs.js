@@ -2,10 +2,10 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import HomeScreen from '../screens/HomeScreen';
-import SearchScreen from '../screens/SearchScreen';
-import FavoritesScreen from '../screens/FavoritesScreen';
-import ProfileScreen from '../screens/ProfileScreen';
+import HomeScreen from '../screens/tabs/HomeScreen';
+import SearchScreen from '../screens/tabs/SearchScreen';
+import FavoritesScreen from '../screens/tabs/FavoritesScreen';
+import ProfileScreen from '../screens/tabs/ProfileScreen';
 import colors from '../theme/colors';
 
 const Tab = createBottomTabNavigator();
@@ -21,7 +21,7 @@ export default function AppTabs() {
                 },
                 tabBarActiveTintColor: colors.primary,
                 tabBarInactiveTintColor: '#aaa',
-                tabBarIcon: ({ focused, color, size }) => {
+                tabBarIcon: ({ focused, }) => {
                     let iconName;
 
                     switch (route.name) {

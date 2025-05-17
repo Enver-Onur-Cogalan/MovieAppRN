@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import colors from '../theme/colors';
+import colors from '../../theme/colors';
 
 export default function SearchFilterBar({ search, setSearch, onFilterPress }) {
     return (
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
         marginLeft: 8,
         borderWidth: 1,
         borderColor: colors.inputBorder,
+        paddingVertical: 8,
     },
     filterButton: {
         backgroundColor: colors.primary,

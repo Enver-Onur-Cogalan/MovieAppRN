@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, StatusBar, Text, View } from 'react-native';
 import LottieView from 'lottie-react-native';
 
-import { searchMovies } from '../services/api';
-import SearchFilterBar from '../components/SearchFilterBar';
-import FilterModal from '../components/FilterModal';
-import { getGenreIdByName } from '../utils/genreMap';
-import MovieCard from '../components/MovieCard';
-import LottieLoader from '../utils/LottieLoader';
+import { searchMovies } from '../../services/api';
+import SearchFilterBar from '../../components/common/SearchFilterBar';
+import FilterModal from '../../components/modal/FilterModal';
+import { getGenreIdByName } from '../../utils/genreMap';
+import MovieCard from '../../components/movie/MovieCard';
+import LottieLoader from '../../utils/LottieLoader';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import KeyboardRefreshWrapper from '../components/KeyboardRefreshWrapper';
+import KeyboardRefreshWrapper from '../../components/common/KeyboardRefreshWrapper';
+import colors from '../../theme/colors';
 
 export default function SearchScreen() {
+    // Search query, results and filter conditions
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -19,6 +21,7 @@ export default function SearchScreen() {
     const [selectedGenre, setSelectedGenre] = useState(null);
     const [selectedRating, setSelectedRating] = useState(null);
 
+    // Automatically capture movie data when search or filter changes
     useEffect(() => {
         const delay = setTimeout(async () => {
             if (query.trim().length > 0 || selectedGenre || selectedRating) {
@@ -39,6 +42,7 @@ export default function SearchScreen() {
         return () => clearTimeout(delay);
     }, [query, selectedGenre, selectedRating]);
 
+    // Filter movies from API: by genre and rating matches
     const filteredResults = results.filter((movie) => {
         const genreMatch = selectedGenre ? movie.genre_ids?.includes(getGenreIdByName(selectedGenre)) : true;
         const ratingMatch = selectedRating ? movie.vote_average >= parseInt(selectedRating) : true;
@@ -49,6 +53,7 @@ export default function SearchScreen() {
     return (
         <KeyboardRefreshWrapper>
             <SafeAreaView style={{ flex: 1 }}>
+                <StatusBar backgroundColor={colors.background} barStyle='light-content' />
                 <SearchFilterBar
                     search={query}
                     setSearch={setQuery}
@@ -61,7 +66,7 @@ export default function SearchScreen() {
 
                     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                         <LottieView
-                            source={require('../assets/animations/searchMovie.json')}
+                            source={require('../../assets/animations/searchMovie.json')}
                             autoPlay
                             loop
                             style={{ width: 250, height: 250 }}

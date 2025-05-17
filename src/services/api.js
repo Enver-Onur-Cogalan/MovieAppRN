@@ -84,3 +84,17 @@ export const searchMovies = async (query) => {
     const response = await axios.get(url, { params });
     return response.data.results;
 };
+
+export const fetchActorDetails = async (actorId) => {
+    const response = await axios.get(`${BASE_URL}/person/${actorId}`, {
+        params: { api_key: API_KEY },
+    });
+    return response.data;
+};
+
+export const fetchActorCredits = async (actorId) => {
+    const response = await axios.get(`${BASE_URL}/person/${actorId}/movie_credits`, {
+        params: { api_key: API_KEY },
+    });
+    return response.data.cast;
+};

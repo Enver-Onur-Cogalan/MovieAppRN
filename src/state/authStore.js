@@ -1,4 +1,5 @@
 import { create } from "zustand";
+
 import { loginUser, registerUser, logoutUser, observeAuthState } from "../services/auth";
 import { deleteAccount as deleteAccountService } from "../services/auth";
 

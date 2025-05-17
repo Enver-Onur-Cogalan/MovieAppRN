@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, TextInput, Alert, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TextInput, Alert, View, TouchableOpacity, StatusBar } from 'react-native';
 import LottieView from 'lottie-react-native';
 
-import useAuthStore from '../state/authStore';
-import colors from '../theme/colors';
-import LottieLoader from '../utils/LottieLoader';
-import KeyboardRefreshWrapper from '../components/KeyboardRefreshWrapper';
-import fonts from '../theme/fonts';
+import useAuthStore from '../../state/authStore';
+import colors from '../../theme/colors';
+import LottieLoader from '../../utils/LottieLoader';
+import KeyboardRefreshWrapper from '../../components/common/KeyboardRefreshWrapper';
+import fonts from '../../theme/fonts';
 
 
 export default function LoginScreen({ navigation }) {
+    // Keep the email and password entered by the user
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -24,6 +25,7 @@ export default function LoginScreen({ navigation }) {
         login(email, password);
     };
 
+    // If login fails, show warning to user
     useEffect(() => {
         if (error) {
             Alert.alert('Email and Password do not match', 'Please enter the correct password');
@@ -33,12 +35,13 @@ export default function LoginScreen({ navigation }) {
 
     return (
         <KeyboardRefreshWrapper>
+            <StatusBar backgroundColor={colors.background} barStyle='light-content' />
 
             <View style={styles.container}>
                 <Text style={styles.title}>Login</Text>
 
                 <LottieView
-                    source={require('../assets/animations/login.json')}
+                    source={require('../../assets/animations/login.json')}
                     autoPlay
                     loop
                     style={styles.lottie}

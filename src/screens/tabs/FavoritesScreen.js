@@ -2,26 +2,28 @@ import React, { useEffect, useState } from 'react';
 import { FlatList, StatusBar, StyleSheet, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import useFavoriteStore from '../state/favoriteStore';
-import useAuthStore from '../state/authStore';
-import FavoriteMovieCard from '../components/FavoriteMovieCard';
-import colors from '../theme/colors';
-import SearchFilterBar from '../components/SearchFilterBar';
-import FilterModal from '../components/FilterModal';
-import { getGenreIdByName } from '../utils/genreMap';
-import EmptyLottie from '../utils/EmptyLottie';
-import KeyboardRefreshWrapper from '../components/KeyboardRefreshWrapper';
-import fonts from '../theme/fonts';
+import useFavoriteStore from '../../state/favoriteStore';
+import useAuthStore from '../../state/authStore';
+import FavoriteMovieCard from '../../components/movie/FavoriteMovieCard';
+import colors from '../../theme/colors';
+import SearchFilterBar from '../../components/common/SearchFilterBar';
+import FilterModal from '../../components/modal/FilterModal';
+import { getGenreIdByName } from '../../utils/genreMap';
+import EmptyLottie from '../../utils/EmptyLottie';
+import KeyboardRefreshWrapper from '../../components/common/KeyboardRefreshWrapper';
+import fonts from '../../theme/fonts';
 
 export default function FavoritesScreen() {
     const { favorites, loadFavorites, toggleFavorite } = useFavoriteStore();
     const user = useAuthStore((state) => state.user);
 
+    // Local states for search, filtering and modal visibility
     const [search, setSearch] = useState('');
     const [filterVisible, setFilterVisible] = useState(false);
     const [selectedGenre, setSelectedGenre] = useState(null);
     const [selectedRating, setSelectedRating] = useState(null);
 
+    // Load favorites when user changes or logs in
     useEffect(() => {
         if (user?.id) {
             loadFavorites(user.id);
@@ -35,6 +37,7 @@ export default function FavoritesScreen() {
         />
     );
 
+    // Search, filtering by type and score
     const filteredResults = favorites.filter((movie) => {
         const matchesSearch = movie.title.toLowerCase().includes(search.toLowerCase());
         const matchesGenre = selectedGenre ? movie.genre_ids?.includes(getGenreIdByName(selectedGenre)) : true;

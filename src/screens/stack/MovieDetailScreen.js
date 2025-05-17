@@ -1,30 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import { Dimensions, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Dimensions, Image, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import * as Animatable from 'react-native-animatable';
 
 
-import { fetchMovieCredits } from '../services/api';
-import colors from '../theme/colors';
-import CastCard from '../components/CastCard';
-import useAuthStore from '../state/authStore';
-import useFavoriteStore from '../state/favoriteStore';
-import fonts from '../theme/fonts';
+import { fetchMovieCredits } from '../../services/api';
+import colors from '../../theme/colors';
+import CastCard from '../../components/movie/CastCard';
+import useAuthStore from '../../state/authStore';
+import useFavoriteStore from '../../state/favoriteStore';
+import fonts from '../../theme/fonts';
+import GoBackButton from '../../components/common/GoBackButton';
 
 const { width, height } = Dimensions.get('window');
 
 export default function MovieDetailScreen() {
     const navigation = useNavigation();
     const route = useRoute();
-    const { movie } = route.params;
+    const { movie } = route.params; // Get the selected movie as parameter
 
     const [cast, setCast] = useState([]);
 
     const { toggleFavorite, isFavorite, loadFavorites, } = useFavoriteStore();
     const user = useAuthStore((state) => state.user);
 
+    // When the screen is loaded, bring up the favorite movies
     useEffect(() => {
         if (user) {
             loadFavorites(user.id);
@@ -32,6 +34,7 @@ export default function MovieDetailScreen() {
     }, []);
 
 
+    // Get movie cast from API
     useEffect(() => {
         const loadCredits = async () => {
             const castData = await fetchMovieCredits(movie.id);
@@ -42,12 +45,8 @@ export default function MovieDetailScreen() {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
-            <Animatable.View animation='pulse' iterationCount='infinite' duration={800} style={styles.header}>
-                <TouchableOpacity onPress={() => navigation.navigate('Tabs')}>
-                    <Icon name='arrow-back-ios' size={24} color={colors.text} />
-                </TouchableOpacity>
-            </Animatable.View>
-
+            <StatusBar backgroundColor={colors.background} barStyle='light-content' />
+            <GoBackButton />
             <ScrollView style={styles.container}>
                 <View>
                     <Image
@@ -56,6 +55,7 @@ export default function MovieDetailScreen() {
                     />
                 </View>
 
+                {/* Favorite button + Points / Year information */}
                 <View style={styles.infoRow}>
                     <Animatable.View
                         animation={isFavorite(movie.id) ? 'rubberBand' : undefined}
@@ -76,6 +76,7 @@ export default function MovieDetailScreen() {
                     </Text>
                 </View>
 
+                {/* Movie name and description */}
                 <View style={styles.content}>
                     <Text style={styles.title}>{movie.title}</Text>
                     <View style={styles.descriptionContainer}>
@@ -86,13 +87,18 @@ export default function MovieDetailScreen() {
                     </View>
                 </View>
 
+                {/* If there is a cast, show it as a horizontal scroll */}
                 {cast.length > 0 && (
                     <View style={{ marginVertical: 16 }}>
                         <Text style={styles.castTitle}>Cast</Text>
 
                         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                             {cast.map((actor) => (
-                                <CastCard key={actor.id} actor={actor} />
+                                <CastCard
+                                    key={actor.id}
+                                    actor={actor}
+                                    onPress={() => navigation.navigate('ActorDetail', { actorId: actor.id })}
+                                />
                             ))}
                         </ScrollView>
                     </View>

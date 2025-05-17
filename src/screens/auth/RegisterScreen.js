@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert, StatusBar } from 'react-native';
 import LottieView from 'lottie-react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import useAuthStore from '../state/authStore';
-import colors from '../theme/colors';
-import LottieLoader from '../utils/LottieLoader';
-import KeyboardRefreshWrapper from '../components/KeyboardRefreshWrapper';
-import fonts from '../theme/fonts';
+import useAuthStore from '../../state/authStore';
+import colors from '../../theme/colors';
+import LottieLoader from '../../utils/LottieLoader';
+import KeyboardRefreshWrapper from '../../components/common/KeyboardRefreshWrapper';
+import fonts from '../../theme/fonts';
 
 export default function RegisterScreen() {
+    // Email and password entered by the user
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -26,6 +27,7 @@ export default function RegisterScreen() {
         register(email, password);
     };
 
+    // Eğer bir hata varsa kullanıcıya alert olarak göster
     useEffect(() => {
         if (error) {
             Alert.alert('Registration Error', error);
@@ -34,10 +36,11 @@ export default function RegisterScreen() {
 
     return (
         <KeyboardRefreshWrapper>
+            <StatusBar backgroundColor={colors.background} barStyle='light-content' />
             <View style={styles.container}>
                 <Text style={styles.title}>Register</Text>
                 <LottieView
-                    source={require('../assets/animations/register.json')}
+                    source={require('../../assets/animations/register.json')}
                     autoPlay
                     loop
                     style={styles.lottie}

@@ -1,45 +1,68 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { FlatList, StyleSheet, Text, View, Alert, BackHandler } from 'react-native';
+import { FlatList, StyleSheet, Text, View, Alert, BackHandler, StatusBar } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useFocusEffect } from '@react-navigation/native';
 
-import { fetchPopularMovies, getRandomMovies, fetchTopRatedMovies, fetchNowPlayingMovies } from '../services/api';
-import colors from '../theme/colors';
-import LottieLoader from '../utils/LottieLoader';
-import MovieCard from '../components/MovieCard';
-import HorizontalMovieList from '../components/HorizontalMovieList';
-import KeyboardRefreshWrapper from '../components/KeyboardRefreshWrapper';
-import { getUniqueRandomMovies } from '../utils/movieHelpers';
-import fonts from '../theme/fonts';
+import { fetchPopularMovies, getRandomMovies, fetchTopRatedMovies, fetchNowPlayingMovies } from '../../services/api';
+import colors from '../../theme/colors';
+import LottieLoader from '../../utils/LottieLoader';
+import MovieCard from '../../components/movie/MovieCard';
+import HorizontalMovieList from '../../components/movie/HorizontalMovieList';
+import KeyboardRefreshWrapper from '../../components/common/KeyboardRefreshWrapper';
+import { getUniqueRandomMovies } from '../../utils/movieHelpers';
+import fonts from '../../theme/fonts';
 
 
 export default function HomeScreen() {
+    // Movie lists and loading status to be displayed on the screen
     const [allMovies, setAllMovies] = useState([]);
     const [randomMovies, setRandomMovies] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    // Show a special exit warning when the back button is pressed on Android devices
     useFocusEffect(
         useCallback(() => {
             const onBackPress = () => {
                 Alert.alert(
-                    'Do you want to exit my app? 😅',
-                    'Or are you testing for bugs? 😂',
+                    'Do you want to exit the app? 😅',
+                    'Or are you just checking something? 😂',
                     [
-                        { text: 'No', style: 'cancel' },
-                        { text: 'Yes', onPress: () => BackHandler.exitApp() },
+                        {
+                            text: 'No',
+                            style: 'cancel',
+                        },
+                        {
+                            text: 'Yes',
+                            onPress: () => {
+                                Alert.alert(
+                                    'Are you really sure?',
+                                    'I am a student of Furkan teacher, we cannot make mistakes 😎',
+                                    [
+                                        {
+                                            text: 'Back to app',
+                                            style: 'cancel',
+                                        },
+                                        {
+                                            text: 'Ok king go ahead',
+                                            onPress: () => { },
+                                        },
+                                    ]
+                                );
+                            },
+                        },
                     ]
                 );
                 return true;
             };
 
             const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
-
             return () => subscription.remove();
         }, [])
     );
 
 
+    // Get all movie data
     const loadMovies = async () => {
         try {
             setLoading(true);
@@ -58,6 +81,7 @@ export default function HomeScreen() {
         }
     };
 
+    // Load movie data on first render
     useEffect(() => {
         loadMovies();
     }, []);
@@ -66,6 +90,7 @@ export default function HomeScreen() {
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
             <KeyboardRefreshWrapper refreshing={loading} onRefresh={loadMovies}>
+                <StatusBar backgroundColor={colors.background} barStyle='light-content' />
                 {loading ? (
                     <LottieLoader animation='loading' size={150} />
                 ) : (

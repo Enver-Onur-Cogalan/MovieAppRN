@@ -1,12 +1,11 @@
 import React from 'react';
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated';
 
-import colors from '../theme/colors';
+import colors from '../../theme/colors';
 import HorizontalMovieCard from './HorizontalMovieCard';
-import fonts from '../theme/fonts';
+import fonts from '../../theme/fonts';
 
-const { width } = Dimensions.get('window');
 
 export default function HorizontalMovieList({ title, movies }) {
     const scrollX = useSharedValue(0);
