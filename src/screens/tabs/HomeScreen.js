@@ -96,7 +96,7 @@ export default function HomeScreen() {
                 ) : (
                     <>
                         <View style={styles.sectionHeader}>
-                            <Icon name='movie-filter' size={24} color={colors.text} />
+                            <Icon name='thumb-up' size={24} color={colors.text} />
                             <Text style={styles.sectionTitle}>Our Picks For You</Text>
                         </View>
 
