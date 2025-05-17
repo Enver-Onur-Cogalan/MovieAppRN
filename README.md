@@ -125,31 +125,31 @@ npx react-native run-ios
 
 ### 🏠 Home Screen
 
-| Ana Sayfa |
+| Home Page |
 |-----------|
 | ![Home Screen](https://github.com/user-attachments/assets/de64f71e-3e65-4d76-8414-8321d45ca6d6) |
 
 ### 🔍 Search Screen
 
-| Arama | Filtreli Arama |
+| Search | Filtered Search |
 |--------|----------------|
 | ![Search Screen 1](https://github.com/user-attachments/assets/72e5a05d-32e9-44cc-8403-8941592c37b5) | ![Search Screen 2](https://github.com/user-attachments/assets/0fc05af2-369e-4581-ba48-a5a7af4147ad) |
 
 ### ❤️ Favorites Screen
 
-| Favoriler | Filtreli Favoriler |
+| Favorites | Filtered Favorites |
 |------------|--------------------|
 | ![Favorites Screen 1](https://github.com/user-attachments/assets/8c61bf5d-3146-44da-bbfb-89f6c1f7c329) | ![Favorites Screen 2](https://github.com/user-attachments/assets/cb2ddadc-fdb7-44a0-85e6-ddc5f365a3a8) |
 
 ### 👤 Profile Screen
 
-| Profil |
+| Profile |
 |--------|
 | ![Profile Screen](https://github.com/user-attachments/assets/7cdc412d-bb9a-456b-9126-380745e406dc) |
 
 ### 🎞️ Movie Detail Screen
 
-| Üst Bilgiler | Oyuncu Listesi |
+| Header Information | Actor List |
 |--------------|----------------|
 | ![Movie Detail Screen 1](https://github.com/user-attachments/assets/a83c4681-6426-4c27-a59b-7ed8dc2805b7) | ![Movie Detail Screen 2](https://github.com/user-attachments/assets/461bbf62-ee8c-4c1e-a510-ad909370a4ae) |
 
