@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StatusBar, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import LottieView from 'lottie-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -8,6 +8,7 @@ import colors from '../../theme/colors';
 import useAuthStore from '../../state/authStore';
 import ConfirmDeleteModal from '../../components/modal/ConfirmDeleteModal';
 import fonts from '../../theme/fonts';
+import Header from '../../components/common/Header';
 
 export default function ProfileScreen() {
     const { logout, deleteAccount, user } = useAuthStore();
@@ -29,28 +30,31 @@ export default function ProfileScreen() {
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar backgroundColor={colors.background} barStyle='light-content' />
-            <LottieView
-                source={require('../../assets/animations/profile.json')}
-                autoPlay
-                loop
-                style={styles.lottie}
-            />
+            <Header title='Movie Library' />
+            <View style={styles.content}>
+                <LottieView
+                    source={require('../../assets/animations/profile.json')}
+                    autoPlay
+                    loop
+                    style={styles.lottie}
+                />
 
-            <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-                <Icon name='logout' size={20} color={colors.text} style={styles.icon} />
-                <Text style={styles.logoutText}>Log Out</Text>
-            </TouchableOpacity>
+                <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+                    <Icon name='logout' size={20} color={colors.text} style={styles.icon} />
+                    <Text style={styles.logoutText}>Log Out</Text>
+                </TouchableOpacity>
 
-            <TouchableOpacity style={styles.deleteButton} onPress={() => setConfirmVisible(true)}>
-                <Icon name='delete-forever' size={20} color={'#aaa'} style={styles.icon} />
-                <Text style={styles.deleteText}>Delete Account</Text>
-            </TouchableOpacity>
+                <TouchableOpacity style={styles.deleteButton} onPress={() => setConfirmVisible(true)}>
+                    <Icon name='delete-forever' size={20} color={'#aaa'} style={styles.icon} />
+                    <Text style={styles.deleteText}>Delete Account</Text>
+                </TouchableOpacity>
 
-            <ConfirmDeleteModal
-                visible={confirmVisible}
-                onClose={() => setConfirmVisible(false)}
-                onConfirm={handleDelete}
-            />
+                <ConfirmDeleteModal
+                    visible={confirmVisible}
+                    onClose={() => setConfirmVisible(false)}
+                    onConfirm={handleDelete}
+                />
+            </View>
         </SafeAreaView>
     );
 }
@@ -60,9 +64,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: colors.background,
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 16,
     },
     lottie: {
         width: 200,
@@ -94,5 +95,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginTop: 4,
+    },
+    content: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 150,
     },
 });

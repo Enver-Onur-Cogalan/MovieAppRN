@@ -117,6 +117,7 @@ export default function SearchScreen() {
                         data={results}
                         keyExtractor={(item) => item.id.toString()}
                         renderItem={renderMovie}
+                        numColumns={2}
                         contentContainerStyle={{ paddingBottom: 32, minHeight: windowHeight + 100 }}
                         onEndReached={handleEndReached}
                         onEndReachedThreshold={0.3}

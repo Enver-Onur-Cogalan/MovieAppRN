@@ -12,6 +12,7 @@ import HorizontalMovieList from '../../components/movie/HorizontalMovieList';
 import KeyboardRefreshWrapper from '../../components/common/KeyboardRefreshWrapper';
 import { getUniqueRandomMovies } from '../../utils/movieHelpers';
 import fonts from '../../theme/fonts';
+import Header from '../../components/common/Header';
 
 
 export default function HomeScreen() {
@@ -91,6 +92,7 @@ export default function HomeScreen() {
         <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
             <KeyboardRefreshWrapper refreshing={loading} onRefresh={loadMovies}>
                 <StatusBar backgroundColor={colors.background} barStyle='light-content' />
+                <Header title='Movie Library' />
                 {loading ? (
                     <LottieLoader animation='loading' size={150} />
                 ) : (

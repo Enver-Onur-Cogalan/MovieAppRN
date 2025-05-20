@@ -14,6 +14,7 @@ import useAuthStore from '../../state/authStore';
 import useFavoriteStore from '../../state/favoriteStore';
 import fonts from '../../theme/fonts';
 import GoBackButton from '../../components/common/GoBackButton';
+import Header from '../../components/common/Header';
 
 const { width, height } = Dimensions.get('window');
 
@@ -57,6 +58,9 @@ export default function MovieDetailScreen() {
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
             <StatusBar backgroundColor={colors.background} barStyle='light-content' />
+            <View style={styles.titleContainer}>
+                <Text style={styles.title}>{movie.title}</Text>
+            </View>
             <GoBackButton />
             <ScrollView style={styles.container}>
                 <View>
@@ -93,7 +97,6 @@ export default function MovieDetailScreen() {
 
                 {/* Movie name and description */}
                 <View style={styles.content}>
-                    <Text style={styles.title}>{movie.title}</Text>
                     <View style={styles.descriptionContainer}>
                         <Icon name='auto-stories' size={24} color='#aaa' />
                         <Text style={styles.description}>
@@ -130,6 +133,14 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.background,
     },
+    titleContainer: {
+        paddingTop: 12,
+        paddingHorizontal: 16,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderBottomWidth: 1,
+        borderBottomColor: colors.primary
+    },
     poster: {
         width,
         height: height * 0.6,
@@ -138,8 +149,9 @@ const styles = StyleSheet.create({
     title: {
         fontSize: fonts.title,
         fontWeight: 'bold',
-        color: colors.primary,
+        color: colors.text,
         marginBottom: 12,
+        textAlign: 'center',
     },
     description: {
         fontSize: fonts.body,
