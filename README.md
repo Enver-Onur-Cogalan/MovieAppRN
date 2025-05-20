@@ -134,7 +134,7 @@ npx react-native run-ios
 
 | Home Page |
 |-----------|
-| ![Home Screen](https://github.com/user-attachments/assets/de64f71e-3e65-4d76-8414-8321d45ca6d6) |
+| ![Home Screen](https://github.com/user-attachments/assets/eead5308-be07-4b6e-bea3-ed4b439d9401) |
 
 ### 🔍 Search Screen
 
@@ -152,13 +152,13 @@ npx react-native run-ios
 
 | Profile |
 |--------|
-| ![Profile Screen](https://github.com/user-attachments/assets/7cdc412d-bb9a-456b-9126-380745e406dc) |
+| ![Profile Screen](https://github.com/user-attachments/assets/10333035-54b5-4623-b021-047277e693f0) |
 
 ### 🎞️ Movie Detail Screen
 
 | Header Information | Actor List |
 |--------------|----------------|
-| ![Movie Detail Screen 1](https://github.com/user-attachments/assets/c6500602-20ea-450f-aa5b-e2f8f0aced6e) | ![Movie Detail Screen 2](https://github.com/user-attachments/assets/0b4bbfed-e5b6-471b-ba66-c841ff0d736f)
+| ![MovieDetailScreen 1](https://github.com/user-attachments/assets/4f16cda0-7b0c-48b5-bfc9-a6c5108338d5) | ![MovieDetailScreen 2](https://github.com/user-attachments/assets/386795e5-80c8-429b-bdf4-87ca46f4d6ac)
  |
 
 ### 🎭 Actor Detail & Modal
