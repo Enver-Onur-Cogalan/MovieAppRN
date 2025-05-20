@@ -43,6 +43,13 @@ src/
 
 ---
 
+### 👤 Registered Accounts
+
+- Email: test@movie.com Password: 123456
+- Email: test2@movie.com Password: 123456
+
+---
+
 ## 📱 App Screens & Features
 
 ### 🏠 Home Screen
