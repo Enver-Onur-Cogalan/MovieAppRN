@@ -151,7 +151,7 @@ npx react-native run-ios
 
 | Header Information | Actor List |
 |--------------|----------------|
-| ![Movie Detail Screen 1](https://github.com/user-attachments/assets/a83c4681-6426-4c27-a59b-7ed8dc2805b7) | ![Movie Detail Screen 2](https://github.com/user-attachments/assets/461bbf62-ee8c-4c1e-a510-ad909370a4ae) |
+| ![Movie Detail Screen 1](https://github.com/user-attachments/assets/c6500602-20ea-450f-aa5b-e2f8f0aced6e) | ![Movie Detail Screen 2](https://github.com/user-attachments/assets/461bbf62-ee8c-4c1e-a510-ad909370a4ae) |
 
 ### 🎭 Actor Detail & Modal
 
