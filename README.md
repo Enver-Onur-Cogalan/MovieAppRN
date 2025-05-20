@@ -174,7 +174,6 @@ npx react-native run-ios
 
 ## 🙌 Acknowledgements
 
-This app was developed as part of a mobile development bootcamp under the guidance of **Furkan Hoca**.  
 Special thanks to the TMDb API team and Firebase community.
 
 ---
