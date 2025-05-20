@@ -72,17 +72,22 @@ export const fetchMovieCredits = async (movieId) => {
     }
 };
 
-export const searchMovies = async (query) => {
+export const searchMovies = async (query, page = 1) => {
     if (!query) return [];
 
     const url = `${BASE_URL}/search/movie`;
     const params = {
         api_key: API_KEY,
         query,
+        page,
     };
 
     const response = await axios.get(url, { params });
-    return response.data.results;
+    return {
+        results: response.data.results,
+        totalPages: response.data.total_pages,
+        currentPage: response.data.page,
+    };
 };
 
 export const fetchActorDetails = async (actorId) => {
