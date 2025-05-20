@@ -3,7 +3,7 @@ import { Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'rea
 import colors from '../../theme/colors';
 import fonts from '../../theme/fonts';
 
-const genres = ['Action', 'Comedy', 'Drama', 'Horror', 'Sci-Fi', 'Animation'];
+const genres = ['Action', 'Adventure', 'Comedy', 'Crime', 'Drama', 'Horror', 'Romance', 'Sci-Fi', 'Thriller', 'Animation'];
 const ratings = ['9+', '8+', '7+', '6+', '5+'];
 
 export default function FilterModal({ visible, onClose, onApply, selectedGenre, setSelectedGenre, selectedRating, setSelectedRating }) {

@@ -7,6 +7,7 @@ import * as Animatable from 'react-native-animatable';
 
 
 import { fetchMovieCredits } from '../../services/api';
+import { getGenreNameById } from '../../utils/genreMap';
 import colors from '../../theme/colors';
 import CastCard from '../../components/movie/CastCard';
 import useAuthStore from '../../state/authStore';
@@ -43,6 +44,16 @@ export default function MovieDetailScreen() {
         loadCredits();
     }, []);
 
+    function getFirstGenreName(movie) {
+        if (movie.genre_ids?.length > 0) {
+            return getGenreNameById(movie.genre_ids[0]);
+        }
+        if (movie.genres?.length > 0) {
+            return movie.genres[0].name;
+        }
+        return 'Unknown';
+    }
+
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
             <StatusBar backgroundColor={colors.background} barStyle='light-content' />
@@ -55,8 +66,12 @@ export default function MovieDetailScreen() {
                     />
                 </View>
 
-                {/* Favorite button + Points / Year information */}
+                {/* Genre + Favorite button + Points / Year information */}
                 <View style={styles.infoRow}>
+                    <Text style={styles.genreChip}>
+                        {getFirstGenreName(movie)}
+                    </Text>
+
                     <Animatable.View
                         animation={isFavorite(movie.id) ? 'rubberBand' : undefined}
                         duration={500}
@@ -93,9 +108,9 @@ export default function MovieDetailScreen() {
                         <Text style={styles.castTitle}>Cast</Text>
 
                         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                            {cast.map((actor) => (
+                            {cast.map((actor, index) => (
                                 <CastCard
-                                    key={actor.id}
+                                    key={`${actor.id}-${index}`}
                                     actor={actor}
                                     onPress={() => navigation.navigate('ActorDetail', { actorId: actor.id })}
                                 />
@@ -124,6 +139,7 @@ const styles = StyleSheet.create({
         fontSize: fonts.title,
         fontWeight: 'bold',
         color: colors.primary,
+        marginBottom: 12,
     },
     description: {
         fontSize: fonts.body,
@@ -146,6 +162,19 @@ const styles = StyleSheet.create({
         gap: 8,
         justifyContent: 'flex-end',
         marginRight: 50,
+    },
+    genreChip: {
+        fontSize: fonts.body,
+        color: colors.text,
+        borderWidth: 1,
+        borderColor: colors.primary,
+        paddingVertical: 4,
+        paddingHorizontal: 12,
+        fontWeight: 'bold',
+        borderRadius: 16,
+        overflow: 'hidden',
+        marginRight: 'auto',
+        marginLeft: 16,
     },
     infoText: {
         fontSize: fonts.body,
