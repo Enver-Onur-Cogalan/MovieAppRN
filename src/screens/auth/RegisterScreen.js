@@ -74,9 +74,10 @@ export default function RegisterScreen() {
                 )}
 
                 <View style={styles.loginRow}>
-                    <Text style={styles.loginText}>Do you already have an account?</Text>
                     <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-                        <Text style={styles.loginLink}>Login</Text>
+                        <Text style={styles.loginText}>
+                            Do you already have an account? <Text style={styles.loginLink}>Login</Text>
+                        </Text>
                     </TouchableOpacity>
                 </View>
             </View>

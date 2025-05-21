@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Dimensions, Image, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Dimensions, Image, Pressable, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -14,7 +14,7 @@ import useAuthStore from '../../state/authStore';
 import useFavoriteStore from '../../state/favoriteStore';
 import fonts from '../../theme/fonts';
 import GoBackButton from '../../components/common/GoBackButton';
-import Header from '../../components/common/Header';
+import useDoubleTap from '../../utils/useDoubleTap';
 
 const { width, height } = Dimensions.get('window');
 
@@ -27,6 +27,10 @@ export default function MovieDetailScreen() {
 
     const { toggleFavorite, isFavorite, loadFavorites, } = useFavoriteStore();
     const user = useAuthStore((state) => state.user);
+
+    const handleDoubleTap = useDoubleTap(() => {
+        toggleFavorite(user?.id, movie);
+    });
 
     // When the screen is loaded, bring up the favorite movies
     useEffect(() => {
@@ -64,10 +68,12 @@ export default function MovieDetailScreen() {
             <GoBackButton />
             <ScrollView style={styles.container}>
                 <View>
-                    <Image
-                        source={{ uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}` }}
-                        style={styles.poster}
-                    />
+                    <Pressable onPress={handleDoubleTap}>
+                        <Image
+                            source={{ uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}` }}
+                            style={styles.poster}
+                        />
+                    </Pressable>
                 </View>
 
                 {/* Genre + Favorite button + Points / Year information */}
