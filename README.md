@@ -27,7 +27,7 @@ src/
 ├── assets/              # Animation files
 │   └── animations/
 ├── components/          # Reusable UI components
-│   ├── common/          # GoBackButton, SearchBar, KeyboardRefreshWrapper
+│   ├── common/          # GoBackButton, SearchBar, KeyboardRefreshWrapper, Header
 │   ├── modal/           # FilterModal, ActorCreditsModal, ConfirmDeleteModal
 │   └── movie/           # MovieCard, HorizontalMovieList, CastCard, FavoriteMovieCard, HorizontalMovieCard,
 ├── navigation/          # Stack & Tab navigators
@@ -176,6 +176,12 @@ npx react-native run-ios
 - StatusBar is styled consistently across all screens
 - Modal UX enhances user interaction without leaving screen
 - Favorites screen supports swipe-to-delete interaction
+  
+  🔹 In the Search and Favorites screens, the search input field is visible by default instead of appearing after a button press.
+
+🎯 This design choice was made intentionally to improve user experience by reducing the number of taps needed to initiate a search. Given that these screens are meant to explore content, having immediate access to the input field was prioritized over strict adherence to the sketch.
+
+📌 If required, the input visibility can easily be toggled through a button interaction — however, the current solution offers a cleaner and more modern UX.
 
 ---
 
