@@ -19,12 +19,14 @@ export default function KeyboardRefreshWrapper({
                     contentContainerStyle={{ flexGrow: 1 }}
                     keyboardShouldPersistTaps='handled'
                     refreshControl={
-                        <RefreshControl
-                            refreshing={refreshing}
-                            onRefresh={onRefresh}
-                            colors={[colors.primary]}
-                            tintColor={colors.primary}
-                        />
+                        refreshing !== undefined && onRefresh ? (
+                            <RefreshControl
+                                refreshing={!!refreshing}
+                                onRefresh={onRefresh}
+                                colors={[colors.primary]}
+                                tintColor={colors.primary}
+                            />
+                        ) : null
                     }
                 >
                     {children}
